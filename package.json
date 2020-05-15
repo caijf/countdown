@@ -1,0 +1,31 @@
+{
+  "name": "countdown-pro",
+  "version": "0.0.0",
+  "description": "A simple countdown.",
+  "main": "dist/countdown.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caijf/countdown.git"
+  },
+  "keywords": [
+    "countdown"
+  ],
+  "author": "caijf",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/caijf/countdown/issues"
+  },
+  "homepage": "https://github.com/caijf/countdown#readme",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-cli": "^2.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0",
+    "pump": "^1.0.2"
+  }
+}

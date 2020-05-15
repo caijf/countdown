@@ -1,0 +1,8 @@
+node_modules/
+.DS_Store
+*.log
+obj/
+src/
+.gitignore
+.package-lock.json
+gulpfile.js
