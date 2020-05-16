@@ -65,9 +65,13 @@ reset | 重设倒计时
 
 ## 格式化工具方法 `countdown-pro/lib/util`
 
+### 使用
+
 ```javascript
 import { format, padZero, parseTimeData, parseFormat } from 'countdown-pro/lib/util';
 ```
+
+如果在浏览器中使用 `script` 标签直接引入文件，可使用全局变量 `countdownUtil` 。 
 
 ### format(timestamp, formatStr='HH:mm:ss')
 
