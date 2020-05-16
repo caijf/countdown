@@ -65,8 +65,6 @@ reset | 重设倒计时
 
 ## 格式化工具方法 `countdown-pro/lib/util`
 
-**引入**
-
 ```javascript
 import { format, padZero, parseTimeData, parseFormat } from 'countdown-pro/lib/util';
 ```

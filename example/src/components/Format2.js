@@ -40,28 +40,33 @@ export default () => {
 import CountDown from "countdown-pro";
 import { format } from "countdown-pro/lib/util";
 
-const defaultTime = 2 * 24 * 60 * 60 * 1000; // 2天
+const defaultTime = 8 * 60 * 60 * 1000; // 8小时
 
 export default () => {
   const [time, setTime] = useState(() => format(defaultTime));
 
-  const countdown = useMemo(() => new CountDown({
-    time: defaultTime,
-    interval: 35,
-    format,
-    onChange: setTime,
-    onEnd: () => {
-      console.log('倒计时结束!');
-    }
-  }), []);
+  const countdown = useMemo(
+    () =>
+      new CountDown({
+        time: defaultTime,
+        interval: 35,
+        format,
+        onChange: setTime,
+        onEnd: () => {
+          // eslint-disable-next-line
+          console.log("倒计时结束!");
+        }
+      }),
+    []
+  );
 
-useEffect(() => {
-countdown.start();
+  useEffect(() => {
+    countdown.start();
 
-return () => countdown.pause();
-}, []);
+    return () => countdown.pause();
+  }, []);
 
-return time
+  return time
 }`}
       </SyntaxHighlighter>
     </>

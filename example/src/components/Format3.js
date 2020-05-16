@@ -63,13 +63,13 @@ export default () => {
     }
   }), []);
 
-useEffect(() => {
-countdown.start();
+  useEffect(() => {
+    countdown.start();
 
-return () => countdown.pause();
-}, []);
+    return () => countdown.pause();
+  }, []);
 
-return time
+  return time
 }`}
       </SyntaxHighlighter>
     </>
