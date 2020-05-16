@@ -17,7 +17,6 @@ export default () => {
     () =>
       new CountDown({
         time: defaultTime,
-        interval: 35,
         format: formatTime,
         onChange: setTime,
         onEnd: () => {
@@ -55,7 +54,6 @@ export default () => {
 
   const countdown = useMemo(() => new CountDown({
     time: defaultTime,
-    interval: 35,
     format: formatTime,
     onChange: setTime,
     onEnd: () => {

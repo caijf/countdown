@@ -13,7 +13,6 @@ export default () => {
     () =>
       new CountDown({
         time: defaultTime,
-        interval: 35,
         format,
         onChange: setTime,
         onEnd: () => {
@@ -49,11 +48,9 @@ export default () => {
     () =>
       new CountDown({
         time: defaultTime,
-        interval: 35,
         format,
         onChange: setTime,
         onEnd: () => {
-          // eslint-disable-next-line
           console.log("倒计时结束!");
         }
       }),
