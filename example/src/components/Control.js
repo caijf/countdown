@@ -58,19 +58,20 @@ export default () => {
       <SyntaxHighlighter language="javascript" style={tomorrowNightEighties}>
         {`import React, { useState, useEffect, useMemo } from "react";
 import CountDown from "countdown-pro";
+import { format } from "countdown-pro/lib/util";
 
 const defaultTime = 10 * 1000;
 
-function format(timestamp) {
-  return timestamp / 1000;
+function formatTime(timestamp) {
+  return format(timestamp, "ss:SSS");
 }
 
 export default () => {
-  const [time, setTime] = useState(() => format(defaultTime));
+  const [time, setTime] = useState(() => formatTime(defaultTime));
 
   const countdown = useMemo(() => new CountDown({
     time: defaultTime,
-    format,
+    format: formatTime,
     interval: 30,
     onChange: setTime,
     onEnd: () => {
