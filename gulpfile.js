@@ -2,7 +2,7 @@ var { src, dest, parallel } = require('gulp');
 var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
 
-function js() {
+function dist() {
   return src('src/*.js')
     .pipe(dest('dist'))
     .pipe(uglify())
@@ -10,4 +10,10 @@ function js() {
     .pipe(dest('dist'))
 }
 
-exports.default = parallel(js);
+function lib() {
+  return src('src/*.js')
+    .pipe(uglify())
+    .pipe(dest('lib'))
+}
+
+exports.default = parallel(lib, dist);

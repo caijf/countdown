@@ -45,7 +45,6 @@
     this.time = this.options.time;
   }
 
-
   CountDown.prototype._handleChange = function () {
     var onChange = this.options.onChange;
     var format = this.options.format;
@@ -66,15 +65,15 @@
   }
 
   CountDown.prototype._tick = function () {
-    if (this.conpleted) {
+    var that = this;
+    var interval = that.options.interval;
+
+    if (that.conpleted) {
+      that._handleEnd();
       return;
     }
 
-    var interval = this.options.interval;
-
-    var that = this;
-
-    this.timer = setTimeout(function () {
+    that.timer = setTimeout(function () {
       that.time -= interval;
 
       if (that.time < 0) {

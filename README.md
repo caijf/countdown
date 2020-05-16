@@ -2,6 +2,8 @@
 
 一个简单的倒计时。
 
+[查看示例][site]
+
 ## 使用
 
 **`npm` 或 `yarn` 安装**
@@ -18,9 +20,9 @@ yarn add countdown-pro
 
 在浏览器中使用 `script` 标签直接引入文件，并使用全局变量 `CountDown` 。
 
-- 该仓库的 [dist](https://github.com/caijf/countdown/tree/master/dist) 目录下也提供了 `countdown.js` 以及 `countdown.min.js`。
-- `npm` 包的 `countdown-pro/dist` 目录下提供了 `countdown.js` 以及 `countdown.min.js`。
-- 你也可以通过 [UNPKG](https://unpkg.com/countdown-pros@latest/dist/) 进行下载。
+- 该仓库的 [dist](https://github.com/caijf/countdown/tree/master/dist) 目录下提供了 `countdown.js` 以及 `countdown.min.js`。
+- `npm` 包的 `countdown-pro/dist` 目录下也提供了 `countdown.js` 以及 `countdown.min.js`。
+- 你也可以通过 [UNPKG](https://unpkg.com/countdown-pro@latest/dist/) 进行下载。
 
 ## 示例
 
@@ -58,3 +60,46 @@ onEnd | 倒计时结束时触发 | `function` | - | -
 start | 开始倒计时
 pause | 暂停倒计时
 reset | 重设倒计时
+
+---
+
+## 格式化工具方法 `countdown-pro/lib/util`
+
+**引入**
+
+```javascript
+import { format, padZero, parseTimeData, parseFormat } from 'countdown-pro/lib/util';
+```
+
+### format(timestamp, formatStr='HH:mm:ss')
+
+> 格式化时间，返回格式化后的时间字符串
+
+参数 | 说明 | 类型 | 必填 | 默认值
+------------- | ------------- | ------------- | ------------- | -------------
+timestamp  | 时间戳，单位毫秒  | `number` | `Y`  | -
+formatStr | 时间格式，DD-日，HH-时，mm-分，ss-秒，SSS-毫秒 | `number` | - | `HH:mm:ss`
+
+### padZero(num, targetLength=2)
+
+> 前置补零，返回补零后的值
+
+### parseTimeData(timestamp)
+
+> 解析时间戳，返回的时间格式 `timeData`
+
+```
+{
+  days: number, // 天数
+  hours: number, // 小时
+  minutes: number, // 分钟
+  seconds: number, // 秒数
+  milliseconds: number // 毫秒
+}
+```
+
+### parseFormat(formatStr, timeData)
+
+> 格式化时间格式 `timeData`
+
+[site]: https://caijf.github.io/countdown/site/

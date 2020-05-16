@@ -6,3 +6,5 @@ src/
 .gitignore
 .package-lock.json
 gulpfile.js
+example/
+site/
