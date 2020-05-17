@@ -31,7 +31,6 @@ export default () => {
 
   return (
     <>
-      <h2>自定义格式 - 时分秒</h2>
       <div>{time}</div>
 
       <SyntaxHighlighter language="javascript" style={tomorrowNightEighties}>

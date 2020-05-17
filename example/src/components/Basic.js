@@ -30,7 +30,6 @@ export default () => {
 
   return (
     <>
-      <h2>基本用法 - 毫秒</h2>
       <div>{time}</div>
 
       <SyntaxHighlighter language="javascript" style={tomorrowNightEighties}>

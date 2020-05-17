@@ -18,7 +18,7 @@ export default () => {
       new CountDown({
         time: defaultTime,
         format: formatTime,
-        interval: 30,
+        interval: 35,
         onChange: setTime,
         onEnd: () => {
           // eslint-disable-next-line
@@ -44,7 +44,6 @@ export default () => {
 
   return (
     <>
-      <h2>控制</h2>
       <div>{time}</div>
       <button onClick={handleStart} type="button">
         开始
@@ -55,6 +54,7 @@ export default () => {
       <button onClick={handleReset} type="button">
         重置
       </button>
+
       <SyntaxHighlighter language="javascript" style={tomorrowNightEighties}>
         {`import React, { useState, useEffect, useMemo } from "react";
 import CountDown from "countdown-pro";
@@ -72,7 +72,7 @@ export default () => {
   const countdown = useMemo(() => new CountDown({
     time: defaultTime,
     format: formatTime,
-    interval: 30,
+    interval: 35,
     onChange: setTime,
     onEnd: () => {
       console.log('倒计时结束!');
