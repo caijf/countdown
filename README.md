@@ -77,31 +77,54 @@ import { format, padZero, parseTimeData, parseFormat } from 'countdown-pro/lib/u
 
 > 格式化时间，返回格式化后的时间字符串
 
+```javascript
+format(2*60*60*1000);
+// => "02:00:00"
+
+format(2*60*60*1000, 'mm:ss');
+// => "120:00"
+```
+
 参数 | 说明 | 类型 | 必填 | 默认值
 ------------- | ------------- | ------------- | ------------- | -------------
 timestamp  | 时间戳，单位毫秒  | `number` | `Y`  | -
-formatStr | 时间格式，DD-日，HH-时，mm-分，ss-秒，SSS-毫秒 | `number` | - | `HH:mm:ss`
+formatStr | 时间格式，DD-日，HH-时，mm-分，ss-秒，SSS-毫秒 | `string` | - | `HH:mm:ss`
 
 ### padZero(num, targetLength=2)
 
 > 前置补零，返回补零后的值
 
+```javascript
+padZero(2);
+// => "02"
+```
+
 ### parseTimeData(timestamp)
 
 > 解析时间戳，返回的时间格式 `timeData`
 
-```
-{
-  days: number, // 天数
-  hours: number, // 小时
-  minutes: number, // 分钟
-  seconds: number, // 秒数
-  milliseconds: number // 毫秒
+```typescript
+interface TimeData {
+  days: number; // 天数
+  hours: number; // 小时
+  minutes: number; // 分钟
+  seconds: number; // 秒数
+  milliseconds: number; // 毫秒
 }
+```
+
+```javascript
+parseTimeData(2*60*60*1000);
+// => {days: 0, hours: 2, minutes: 0, seconds: 0, milliseconds: 0}
 ```
 
 ### parseFormat(formatStr, timeData)
 
 > 格式化时间格式 `timeData`
+
+```javascript
+parseFormat('mm:ss', {days: 0, hours: 2, minutes: 0, seconds: 0, milliseconds: 0});
+// => "120:00"
+```
 
 [site]: https://caijf.github.io/countdown/site/

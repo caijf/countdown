@@ -31,10 +31,10 @@
   function parseTimeData(time) {
     var ret = {};
     
-    ret.days = Math.floor(time / DAY),
-    ret.hours = Math.floor((time % DAY) / HOUR),
-    ret.minutes = Math.floor((time % HOUR) / MINUTE),
-    ret.seconds = Math.floor((time % MINUTE) / SECOND),
+    ret.days = Math.floor(time / DAY);
+    ret.hours = Math.floor((time % DAY) / HOUR);
+    ret.minutes = Math.floor((time % HOUR) / MINUTE);
+    ret.seconds = Math.floor((time % MINUTE) / SECOND);
     ret.milliseconds = Math.floor(time % SECOND);
 
     return ret;
