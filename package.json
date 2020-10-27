@@ -1,6 +1,6 @@
 {
   "name": "countdown-pro",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple countdown.",
   "main": "lib/countdown.js",
   "types": "types/index.d.ts",
