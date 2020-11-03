@@ -6,7 +6,7 @@
   "types": "types/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx gulp"
+    "build": "npx gulp && cp types/util.d.ts lib"
   },
   "repository": {
     "type": "git",
