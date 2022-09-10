@@ -1,6 +1,6 @@
 # CountDown
 
-[![npm][npm]][npm-url] ![npm](https://img.shields.io/npm/dt/countdown-pro)
+[![npm][npm]][npm-url] ![npm](https://img.shields.io/npm/dt/countdown-pro) ![GitHub](https://img.shields.io/github/license/caijf/countdown.svg)
 
 一个简单的倒计时。
 
