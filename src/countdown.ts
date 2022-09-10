@@ -72,8 +72,8 @@ class CountDown {
   }
 
   private tick() {
-    var that = this;
-    var interval = that.options.interval;
+    const that = this;
+    const interval = that.options.interval;
 
     if (that.completed) {
       that.handleEnd();

@@ -5,7 +5,7 @@
  * @param targetLength 目标长度
  * @returns 补零后的值
  */
-export function padZero(num: string | number, targetLength: number = 2) {
+export function padZero(num: string | number, targetLength = 2) {
   let str = num + '';
   while (str.length < targetLength) {
     str = '0' + str;
@@ -42,6 +42,7 @@ export function parseTimeData(timestamp: number) {
  * @returns 返回格式化后的时间字符串
  */
 export function parseFormat(format: string, timeData: ReturnType<typeof parseTimeData>) {
+  // eslint-disable-next-line prefer-const
   let { days, hours, minutes, seconds, milliseconds } = timeData;
 
   if (format.indexOf('DD') === -1) {
@@ -79,6 +80,6 @@ export function parseFormat(format: string, timeData: ReturnType<typeof parseTim
  * @returns {string} 返回格式化后的时间字符串
  */
 export function format(timestamp: number, pattern = 'HH:mm:ss') {
-  var timeData = parseTimeData(timestamp);
+  const timeData = parseTimeData(timestamp);
   return parseFormat(pattern, timeData);
 }
