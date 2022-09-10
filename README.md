@@ -1,5 +1,7 @@
 # CountDown
 
+[![npm][npm]][npm-url] ![npm](https://img.shields.io/npm/dt/countdown-pro)
+
 一个简单的倒计时。
 
 [查看示例][site]
@@ -32,12 +34,12 @@ import CountDown from 'countdown-pro';
 const countdown = new CountDown({
   time: 60 * 1000,
   interval: 1000,
-  onChange: time => {
+  onChange: (time) => {
     console.log(time);
   },
   onEnd: () => {
     console.log('结束');
-  },
+  }
 });
 
 countdown.start();
@@ -73,10 +75,10 @@ CountDown.format(2 * 60 * 60 * 1000); // "02:00:00"
 CountDown.format(2 * 60 * 60 * 1000, 'mm:ss'); // "120:00"
 ```
 
-| 参数 | 说明 | 类型 | 必填 | 默认值 |
-| --- | --- | --- | --- | --- |
-| timestamp | 时间戳，单位毫秒 | `number` | `Y` | - |
-| pattern | 时间格式，DD-日，HH-时，mm-分，ss-秒，SSS-毫秒 | `string` | - | `HH:mm:ss` |
+| 参数      | 说明                                           | 类型     | 必填 | 默认值     |
+| --------- | ---------------------------------------------- | -------- | ---- | ---------- |
+| timestamp | 时间戳，单位毫秒                               | `number` | `Y`  | -          |
+| pattern   | 时间格式，DD-日，HH-时，mm-分，ss-秒，SSS-毫秒 | `string` | -    | `HH:mm:ss` |
 
 ### CountDown.padZero(num, targetLength=2)
 
@@ -104,4 +106,6 @@ interface TimeData {
 CountDown.parseTimeData(2 * 60 * 60 * 1000); // {days: 0, hours: 2, minutes: 0, seconds: 0, milliseconds: 0}
 ```
 
-[site]: https://caijf.github.io/countdown/site/
+[site]: https://caijf.github.io/countdown/examples/
+[npm]: https://img.shields.io/npm/v/countdown-pro.svg
+[npm-url]: https://npmjs.com/package/countdown-pro
