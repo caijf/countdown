@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.6.0/styles/default.min.css"
+      rel="stylesheet"
+    />
+    <title>自定义格式 - 秒</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.6.0/styles/default.min.css" rel="stylesheet">
-  <title>自定义格式 - 秒</title>
-</head>
-
-<body>
-  <div id="result"></div>
-  <pre><code class="language-javascript">var oResult = document.getElementById('result');
+  <body>
+    <div id="result"></div>
+    <pre><code class="language-javascript">var oResult = document.getElementById('result');
 var countdown = new CountDown({
   time: 60 * 1000,
   onChange(currentTime) {
@@ -23,30 +25,29 @@ var countdown = new CountDown({
 });
 
 countdown.start();</code></pre>
-  <script src="../dist/countdown.umd.js"></script>
-  <script>
-    var oResult = document.getElementById('result');
-    var countdown = new CountDown({
-      time: 60 * 1000,
-      onChange(currentTime) {
-        oResult.innerText = currentTime / 1000;
-      },
-      onEnd() {
-        oResult.innerText = '倒计时结束！';
-      }
-    });
-
-    countdown.start();
-  </script>
-
-  <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      document.querySelectorAll('pre code').forEach((el) => {
-        hljs.highlightElement(el);
+    <script src="../dist/countdown.umd.js"></script>
+    <script>
+      var oResult = document.getElementById('result');
+      var countdown = new CountDown({
+        time: 60 * 1000,
+        onChange(currentTime) {
+          oResult.innerText = currentTime / 1000;
+        },
+        onEnd() {
+          oResult.innerText = '倒计时结束！';
+        }
       });
-    });
-  </script>
-</body>
 
+      countdown.start();
+    </script>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre code').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  </body>
 </html>

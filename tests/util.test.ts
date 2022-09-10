@@ -1,7 +1,6 @@
 import { format, parseFormat, parseTimeData, padZero } from '../src/util';
 
 describe('util', () => {
-
   it('format', () => {
     // @ts-ignore
     expect(format()).toBe('NaN:NaN:NaN');
@@ -49,7 +48,7 @@ describe('util', () => {
 
   it('padZero', () => {
     // @ts-ignore
-    expect(padZero()).toBe("undefined");
+    expect(padZero()).toBe('undefined');
     // @ts-ignore
     expect(padZero(true)).toBe('true');
 
@@ -66,17 +65,77 @@ describe('util', () => {
 
   it('parseTimeData', () => {
     // @ts-ignore
-    expect(parseTimeData()).toEqual({ "days": NaN, "hours": NaN, "milliseconds": NaN, "minutes": NaN, "seconds": NaN });
+    expect(parseTimeData()).toEqual({
+      days: NaN,
+      hours: NaN,
+      milliseconds: NaN,
+      minutes: NaN,
+      seconds: NaN
+    });
 
-    expect(parseTimeData(1)).toEqual({ "days": 0, "hours": 0, "milliseconds": 1, "minutes": 0, "seconds": 0 });
-    expect(parseTimeData(10)).toEqual({ "days": 0, "hours": 0, "milliseconds": 10, "minutes": 0, "seconds": 0 });
-    expect(parseTimeData(100)).toEqual({ "days": 0, "hours": 0, "milliseconds": 100, "minutes": 0, "seconds": 0 });
-    expect(parseTimeData(1000)).toEqual({ "days": 0, "hours": 0, "milliseconds": 0, "minutes": 0, "seconds": 1 });
-    expect(parseTimeData(2 * 1000)).toEqual({ "days": 0, "hours": 0, "milliseconds": 0, "minutes": 0, "seconds": 2 });
-    expect(parseTimeData(60 * 1000)).toEqual({ "days": 0, "hours": 0, "milliseconds": 0, "minutes": 1, "seconds": 0 });
-    expect(parseTimeData(2 * 60 * 1000)).toEqual({ "days": 0, "hours": 0, "milliseconds": 0, "minutes": 2, "seconds": 0 });
-    expect(parseTimeData(60 * 60 * 1000)).toEqual({ "days": 0, "hours": 1, "milliseconds": 0, "minutes": 0, "seconds": 0 });
-    expect(parseTimeData(24 * 60 * 60 * 1000)).toEqual({ "days": 1, "hours": 0, "milliseconds": 0, "minutes": 0, "seconds": 0 });
+    expect(parseTimeData(1)).toEqual({
+      days: 0,
+      hours: 0,
+      milliseconds: 1,
+      minutes: 0,
+      seconds: 0
+    });
+    expect(parseTimeData(10)).toEqual({
+      days: 0,
+      hours: 0,
+      milliseconds: 10,
+      minutes: 0,
+      seconds: 0
+    });
+    expect(parseTimeData(100)).toEqual({
+      days: 0,
+      hours: 0,
+      milliseconds: 100,
+      minutes: 0,
+      seconds: 0
+    });
+    expect(parseTimeData(1000)).toEqual({
+      days: 0,
+      hours: 0,
+      milliseconds: 0,
+      minutes: 0,
+      seconds: 1
+    });
+    expect(parseTimeData(2 * 1000)).toEqual({
+      days: 0,
+      hours: 0,
+      milliseconds: 0,
+      minutes: 0,
+      seconds: 2
+    });
+    expect(parseTimeData(60 * 1000)).toEqual({
+      days: 0,
+      hours: 0,
+      milliseconds: 0,
+      minutes: 1,
+      seconds: 0
+    });
+    expect(parseTimeData(2 * 60 * 1000)).toEqual({
+      days: 0,
+      hours: 0,
+      milliseconds: 0,
+      minutes: 2,
+      seconds: 0
+    });
+    expect(parseTimeData(60 * 60 * 1000)).toEqual({
+      days: 0,
+      hours: 1,
+      milliseconds: 0,
+      minutes: 0,
+      seconds: 0
+    });
+    expect(parseTimeData(24 * 60 * 60 * 1000)).toEqual({
+      days: 1,
+      hours: 0,
+      milliseconds: 0,
+      minutes: 0,
+      seconds: 0
+    });
   });
 
   it('parseFormat', () => {

@@ -5,10 +5,10 @@ type Options = {
   interval?: number;
   onChange?: (currentTime: number) => void;
   onEnd?: () => void;
-}
+};
 
 class CountDown {
-  options: Options & { time: number; interval: number; };
+  options: Options & { time: number; interval: number };
 
   private timer: any;
   private counting: boolean;
@@ -28,7 +28,10 @@ class CountDown {
       }
     }
 
-    this.options.time = (typeof this.options.time !== 'number' || this.options.time < 0) ? 0 : Math.ceil(this.options.time); // 倒计时长
+    this.options.time =
+      typeof this.options.time !== 'number' || this.options.time < 0
+        ? 0
+        : Math.ceil(this.options.time); // 倒计时长
 
     this.timer = null; // 定时器
     this.counting = false; // 标识正在倒计时

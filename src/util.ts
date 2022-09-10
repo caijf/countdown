@@ -1,6 +1,6 @@
 /**
  * 前置补零，如果值的长度小于目标长度，则前置补零，否则不处理
- * 
+ *
  * @param num 待处理的值
  * @param targetLength 目标长度
  * @returns 补零后的值
@@ -20,7 +20,7 @@ const DAY = 24 * HOUR;
 
 /**
  * 解析时间戳
- * 
+ *
  * @param {number} timestamp 时间戳，单位毫秒
  * @returns 包含日/时/分/秒/毫秒的对象
  */
@@ -36,7 +36,7 @@ export function parseTimeData(timestamp: number) {
 
 /**
  * 格式化时间格式
- * 
+ *
  * @param format 时间格式，DD-日，HH-时，mm-分，ss-秒，SSS-毫秒
  * @param timeData 包含日/时/分/秒/毫秒的对象
  * @returns 返回格式化后的时间字符串
@@ -74,7 +74,7 @@ export function parseFormat(format: string, timeData: ReturnType<typeof parseTim
 
 /**
  * 格式化时间
- * 
+ *
  * @param {number} timestamp 时间戳，单位毫秒
  * @param {string} [pattern='HH:mm:ss'] 时间格式，DD-日，HH-时，mm-分，ss-秒，SSS-毫秒。默认值为 HH:mm:ss
  * @returns {string} 返回格式化后的时间字符串
