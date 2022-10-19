@@ -4,18 +4,22 @@
   "description": "A simple countdown.",
   "main": "dist/countdown.cjs.js",
   "module": "dist/countdown.esm.js",
-  "types": "dist/countdown.d.ts",
+  "unpkg": "dist/countdown.umd.min.js",
+  "types": "types/countdown.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "types"
   ],
   "scripts": {
     "test": "jest --verbose",
-    "build": "rm -rf dist && rollup -c",
+    "build": "rm -rf dist && rollup -c && npm run build:types",
+    "build:types": "rm -rf types && tsc -p tsconfig.types.json",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
     "lint-fix": "npm run lint -- --fix",
     "prettier": "prettier --write **/*",
     "commit": "cz",
-    "prepublishOnly": "npm test && npm run build"
+    "prepublishOnly": "npm test && npm run build",
+    "tsc": "tsc --noEmit"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": "eslint",

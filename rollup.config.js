@@ -18,7 +18,8 @@ export default {
     {
       file: 'dist/countdown.umd.js',
       name: 'CountDown',
-      format: 'umd'
+      format: 'umd',
+      sourcemap: true,
     },
     {
       file: 'dist/countdown.umd.min.js',
@@ -28,5 +29,5 @@ export default {
       plugins: [terser()]
     }
   ],
-  plugins: [nodeResolve(), commonjs(), typescript({ compilerOptions: { declarationDir: './types' } })]
+  plugins: [nodeResolve(), commonjs(), typescript()]
 }
