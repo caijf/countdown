@@ -8,7 +8,7 @@
 
 ## 使用
 
-**`npm` 或 `yarn` 安装**
+**安装**
 
 ```shell
 npm install countdown-pro
@@ -16,6 +16,10 @@ npm install countdown-pro
 
 ```shell
 yarn add countdown-pro
+```
+
+```shell
+pnpm add countdown-pro
 ```
 
 **浏览器引入**
