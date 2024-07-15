@@ -26,7 +26,7 @@ class CountDown {
 
     for (const prop in options) {
       // @ts-ignore
-      this.options[prop] = options[prop];
+      this.o[prop] = options[prop];
     }
 
     // 倒计时长
@@ -52,8 +52,10 @@ class CountDown {
 
   // 暂停
   pause() {
-    clearTimeout(this.timer);
-    this.counting = false;
+    if (this.counting) {
+      clearTimeout(this.timer);
+      this.counting = false;
+    }
   }
 
   // 重置
