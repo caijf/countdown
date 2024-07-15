@@ -24,9 +24,14 @@ class CountDown {
       time: 0
     };
 
-    for (const prop in options) {
-      // @ts-ignore
-      this.o[prop] = options[prop];
+    if (typeof options === 'object') {
+      for (const prop in options) {
+        // @ts-ignore
+        if (options[prop] !== undefined) {
+          // @ts-ignore
+          this.o[prop] = options[prop];
+        }
+      }
     }
 
     // 倒计时长

@@ -18,6 +18,8 @@ const MINUTE = 60 * SECOND;
 const HOUR = 60 * MINUTE;
 const DAY = 24 * HOUR;
 
+const mathFloor = Math.floor;
+
 /**
  * 解析时间戳
  *
@@ -26,11 +28,11 @@ const DAY = 24 * HOUR;
  */
 export function parseTimeData(timestamp: number) {
   return {
-    days: Math.floor(timestamp / DAY),
-    hours: Math.floor((timestamp % DAY) / HOUR),
-    minutes: Math.floor((timestamp % HOUR) / MINUTE),
-    seconds: Math.floor((timestamp % MINUTE) / SECOND),
-    milliseconds: Math.floor(timestamp % SECOND)
+    days: mathFloor(timestamp / DAY),
+    hours: mathFloor((timestamp % DAY) / HOUR),
+    minutes: mathFloor((timestamp % HOUR) / MINUTE),
+    seconds: mathFloor((timestamp % MINUTE) / SECOND),
+    milliseconds: mathFloor(timestamp % SECOND)
   };
 }
 
