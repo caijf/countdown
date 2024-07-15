@@ -1,4 +1,4 @@
-import { format, parseTimeData, parseFormat, padZero } from './util';
+import { format, parseTimeData, parseFormat, padZero, noop } from './util';
 
 type Options = {
   time: number;
@@ -8,7 +8,8 @@ type Options = {
 };
 
 class CountDown {
-  options: Options & { time: number; interval: number };
+  private o: Required<Options>; // alias
+  options: Required<Options>;
 
   private timer: any;
   private counting: boolean;
@@ -16,33 +17,32 @@ class CountDown {
   private currentTime: number;
 
   constructor(options: Options) {
-    this.options = {
-      time: 0,
-      interval: 1000
+    this.options = this.o = {
+      onChange: noop,
+      onEnd: noop,
+      interval: 1000,
+      time: 0
     };
 
     for (const prop in options) {
-      if (Object.prototype.hasOwnProperty.call(options, prop)) {
-        // @ts-ignore
-        this.options[prop] = options[prop];
-      }
+      // @ts-ignore
+      this.options[prop] = options[prop];
     }
 
-    this.options.time =
-      typeof this.options.time !== 'number' || this.options.time < 0
-        ? 0
-        : Math.ceil(this.options.time); // 倒计时长
+    // 倒计时长
+    if (typeof this.o.time !== 'number' || this.o.time < 0) {
+      this.o.time = 0;
+    }
 
     this.timer = null; // 定时器
     this.counting = false; // 标识正在倒计时
     this.completed = false; // 标识倒计时完成
-
-    this.currentTime = this.options.time; // 记录当前倒计时长
+    this.currentTime = this.o.time; // 记录当前倒计时长
   }
 
   // 开始
   start() {
-    if (this.counting) {
+    if (this.counting || this.completed) {
       return;
     }
 
@@ -60,42 +60,30 @@ class CountDown {
   reset() {
     this.pause();
     this.completed = false;
-    this.currentTime = this.options.time;
-    this.handleChange();
-  }
-
-  private handleChange() {
-    this.options.onChange?.(this.currentTime);
-  }
-
-  private handleEnd() {
-    this.pause();
-    this.completed = true;
-    this.options.onEnd?.();
+    if (this.currentTime !== this.o.time) {
+      this.currentTime = this.o.time;
+      this.o.onChange(this.currentTime);
+    }
   }
 
   private tick() {
-    const that = this;
-    const interval = that.options.interval;
+    const interval = this.o.interval;
 
-    if (that.completed) {
-      that.handleEnd();
-      return;
-    }
+    this.timer = setTimeout(() => {
+      this.currentTime -= interval;
 
-    that.timer = setTimeout(function () {
-      that.currentTime -= interval;
-
-      if (that.currentTime < 0) {
-        that.currentTime = 0;
+      if (this.currentTime < 0) {
+        this.currentTime = 0;
       }
 
-      that.handleChange();
+      this.o.onChange(this.currentTime);
 
-      if (that.currentTime <= 0) {
-        that.handleEnd();
+      if (this.currentTime === 0) {
+        this.counting = false;
+        this.completed = true;
+        this.o.onEnd();
       } else {
-        that.tick();
+        this.tick();
       }
     }, interval);
   }

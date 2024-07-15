@@ -6,7 +6,7 @@
  * @returns 补零后的值
  */
 export function padZero(num: string | number, targetLength = 2) {
-  let str = num + '';
+  let str = '' + num;
   while (str.length < targetLength) {
     str = '0' + str;
   }
@@ -83,3 +83,5 @@ export function format(timestamp: number, pattern = 'HH:mm:ss') {
   const timeData = parseTimeData(timestamp);
   return parseFormat(pattern, timeData);
 }
+
+export const noop = () => {};
