@@ -1,6 +1,6 @@
 import { format, parseTimeData, parseFormat, padZero, noop } from './util';
 
-type Options = {
+export type Options = {
   time: number;
   interval?: number;
   onChange?: (currentTime: number) => void;
