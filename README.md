@@ -38,10 +38,10 @@ import CountDown from 'countdown-pro';
 const countdown = new CountDown({
   time: 60 * 1000,
   interval: 1000,
-  onChange: (time) => {
+  onChange(time) {
     console.log(time);
   },
-  onEnd: () => {
+  onEnd() {
     console.log('结束');
   }
 });
@@ -60,11 +60,12 @@ countdown.start();
 
 ## 实例方法
 
-| 方法名 | 说明       |
-| ------ | ---------- |
-| start  | 开始倒计时 |
-| pause  | 暂停倒计时 |
-| reset  | 重置倒计时 |
+| 方法名  | 说明             |
+| ------- | ---------------- |
+| start   | 开始倒计时       |
+| pause   | 暂停倒计时       |
+| reset   | 重置倒计时       |
+| restart | 重置再开始倒计时 |
 
 ## 静态方法
 

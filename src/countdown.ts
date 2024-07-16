@@ -7,9 +7,11 @@ export type Options = {
   onEnd?: () => void;
 };
 
+const defaultInterval = 1000;
+
 class CountDown {
   private o: Required<Options>; // alias
-  options: Required<Options>;
+  protected options: Required<Options>;
 
   private timer: any;
   private counting: boolean;
@@ -20,10 +22,19 @@ class CountDown {
     this.options = this.o = {
       onChange: noop,
       onEnd: noop,
-      interval: 1000,
+      interval: defaultInterval,
       time: 0
     };
 
+    this.updateOptions(options);
+
+    this.timer = null; // 定时器
+    this.counting = false; // 标识正在倒计时
+    this.completed = false; // 标识倒计时完成
+    this.currentTime = this.o.time; // 记录当前倒计时长
+  }
+
+  updateOptions(options: Partial<Options>) {
     if (typeof options === 'object') {
       for (const prop in options) {
         // @ts-ignore
@@ -38,11 +49,10 @@ class CountDown {
     if (typeof this.o.time !== 'number' || this.o.time < 0) {
       this.o.time = 0;
     }
-
-    this.timer = null; // 定时器
-    this.counting = false; // 标识正在倒计时
-    this.completed = false; // 标识倒计时完成
-    this.currentTime = this.o.time; // 记录当前倒计时长
+    // 倒计时间隔
+    if (typeof this.o.interval !== 'number' || this.o.interval < 0) {
+      this.o.interval = defaultInterval;
+    }
   }
 
   // 开始
@@ -71,6 +81,12 @@ class CountDown {
       this.currentTime = this.o.time;
       this.o.onChange(this.currentTime);
     }
+  }
+
+  // 重新开始
+  restart() {
+    this.reset();
+    this.start();
   }
 
   private tick() {
