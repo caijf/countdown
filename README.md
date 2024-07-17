@@ -51,12 +51,12 @@ countdown.start();
 
 ## 配置项
 
-| 参数     | 说明               | 类型                    | 必填 | 默认值 |
-| -------- | ------------------ | ----------------------- | ---- | ------ |
-| time     | 倒计时，单位毫秒   | `number`                | `Y`  | `0`    |
-| interval | 时间间隔，单位毫秒 | `number`                | -    | `1000` |
-| onChange | 每次时间间隔时触发 | `(currentTime) => void` | -    | -      |
-| onEnd    | 倒计时结束时触发   | `() => void`            | -    | -      |
+| 参数     | 说明               | 类型                            | 必填 | 默认值 |
+| -------- | ------------------ | ------------------------------- | ---- | ------ |
+| time     | 倒计时，单位毫秒   | `number`                        | `Y`  | `0`    |
+| interval | 时间间隔，单位毫秒 | `number`                        | `N`  | `1000` |
+| onChange | 每次时间间隔时触发 | `(currentTime: number) => void` | `N`  | -      |
+| onEnd    | 倒计时结束时触发   | `() => void`                    | `N`  | -      |
 
 ## 实例方法
 
@@ -99,13 +99,13 @@ CountDown.padZero(2); // "02"
 > 解析时间戳，返回的时间对象格式 `timeData`
 
 ```typescript
-interface TimeData {
+type TimeData = {
   days: number; // 天数
   hours: number; // 小时
   minutes: number; // 分钟
   seconds: number; // 秒数
   milliseconds: number; // 毫秒
-}
+};
 ```
 
 ```javascript
