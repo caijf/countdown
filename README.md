@@ -112,6 +112,42 @@ type TimeData = {
 CountDown.parseTimeData(2 * 60 * 60 * 1000); // {days: 0, hours: 2, minutes: 0, seconds: 0, milliseconds: 0}
 ```
 
+## 常见问题
+
+### 如何解决误差？
+
+> 参考：[延时比指定值更长的原因](https://developer.mozilla.org/zh-CN/docs/Web/API/setTimeout#%E5%BB%B6%E6%97%B6%E6%AF%94%E6%8C%87%E5%AE%9A%E5%80%BC%E6%9B%B4%E9%95%BF%E7%9A%84%E5%8E%9F%E5%9B%A0)
+
+如果是应用于弱时效性的场景，可以忽略延时误差。如短信验证码重新发送倒计时。
+
+如果是秒杀、抢购等强时效性的场景，通过服务器时间校对比较靠谱。可以监听页面可见或隐藏事件、固定间隔时间等方式获取最新的服务器时间，然后更新倒计时。
+
+```typescript
+const countdown = new Countdown({
+  // ...
+});
+
+document.addEventListener('visibilityChange', function () {
+  if (!document.hidden) {
+    // 获取服务器时间
+    // ...
+    countdown.updateOptions({
+      time: finalTime - serviceTime
+    });
+    countdown.restart();
+  }
+});
+
+setInterval(() => {
+  // 获取服务器时间
+  // ...
+  countdown.updateOptions({
+    time: finalTime - serviceTime
+  });
+  countdown.restart();
+}, 60 * 1000);
+```
+
 [site]: https://caijf.github.io/countdown/examples/
 [npm]: https://img.shields.io/npm/v/countdown-pro.svg
 [npm-url]: https://npmjs.com/package/countdown-pro
