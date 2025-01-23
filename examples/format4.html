@@ -1,23 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.6.0/styles/default.min.css"
+      rel="stylesheet"
+    />
+    <title>自定义格式 - 活动倒计时</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.6.0/styles/default.min.css" rel="stylesheet" />
-  <title>自定义格式 - 活动倒计时</title>
-</head>
-
-<body>
-  <div id="result"></div>
-  <pre><code class="language-javascript">var oResult = document.getElementById('result');
+  <body>
+    <div id="result"></div>
+    <pre><code class="language-javascript">var oResult = document.getElementById('result');
 var countdown = new CountDown({
   time: 2 * 24 * 60 * 60 * 1000,
   interval: 100,
+  adjustInterval: 10 * 1000,
   onChange(currentTime) {
     var timeData = CountDown.parseTimeData(currentTime);
-    oResult.innerText = '距活动结束还剩 ' + timeData.days + ' 天 ' + timeData.hours + ' 小时 ' + timeData.minutes + ' 分 ' + timeData.seconds + '.' + timeData.milliseconds/100 + ' 秒';
+    oResult.innerText = '距活动结束还剩 ' + timeData.days + ' 天 ' + timeData.hours + ' 小时 ' + timeData.minutes + ' 分 ' + timeData.seconds + '.' + (timeData.milliseconds / 100).toFixed() + ' 秒';
   },
   onEnd() {
     oResult.innerText = '倒计时结束！';
@@ -25,43 +28,43 @@ var countdown = new CountDown({
 });
 
 countdown.start();</code></pre>
-  <script src="https://unpkg.com/countdown-pro@2/dist/countdown.umd.js"></script>
-  <script>
-    var oResult = document.getElementById('result');
-    var countdown = new CountDown({
-      time: 2 * 24 * 60 * 60 * 1000,
-      interval: 100,
-      onChange(currentTime) {
-        var timeData = CountDown.parseTimeData(currentTime);
-        oResult.innerText =
-          '距活动结束还剩 ' +
-          timeData.days +
-          ' 天 ' +
-          timeData.hours +
-          ' 小时 ' +
-          timeData.minutes +
-          ' 分 ' +
-          timeData.seconds +
-          '.' +
-          timeData.milliseconds / 100 +
-          ' 秒';
-      },
-      onEnd() {
-        oResult.innerText = '倒计时结束！';
-      }
-    });
-
-    countdown.start();
-  </script>
-
-  <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      document.querySelectorAll('pre code').forEach((el) => {
-        hljs.highlightElement(el);
+    <script src="https://unpkg.com/countdown-pro@2/dist/countdown.umd.js"></script>
+    <script>
+      var oResult = document.getElementById('result');
+      var countdown = new CountDown({
+        time: 2 * 24 * 60 * 60 * 1000,
+        interval: 100,
+        adjustInterval: 10 * 1000,
+        onChange(currentTime) {
+          var timeData = CountDown.parseTimeData(currentTime);
+          oResult.innerText =
+            '距活动结束还剩 ' +
+            timeData.days +
+            ' 天 ' +
+            timeData.hours +
+            ' 小时 ' +
+            timeData.minutes +
+            ' 分 ' +
+            timeData.seconds +
+            '.' +
+            (timeData.milliseconds / 100).toFixed() +
+            ' 秒';
+        },
+        onEnd() {
+          oResult.innerText = '倒计时结束！';
+        }
       });
-    });
-  </script>
-</body>
 
+      countdown.start();
+    </script>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre code').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  </body>
 </html>

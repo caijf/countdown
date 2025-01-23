@@ -1,20 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.6.0/styles/default.min.css"
+      rel="stylesheet"
+    />
+    <title>手动控制</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.6.0/styles/default.min.css" rel="stylesheet" />
-  <title>手动控制</title>
-</head>
-
-<body>
-  <div id="result"></div>
-  <button id="start">开始</button>
-  <button id="pause">暂停</button>
-  <button id="reset">重置</button>
-  <pre><code class="language-javascript">var oResult = document.getElementById('result');
+  <body>
+    <div id="result"></div>
+    <button id="start">开始</button>
+    <button id="pause">暂停</button>
+    <button id="reset">重置</button>
+    <pre><code class="language-javascript">var oResult = document.getElementById('result');
 var oStartBtn = document.getElementById('start');
 var oPauseBtn = document.getElementById('pause');
 var oResetBtn = document.getElementById('reset');
@@ -43,47 +45,46 @@ oPauseBtn.addEventListener('click', () => {
 oResetBtn.addEventListener('click', () => {
   countdown.reset();
 });</code></pre>
-  <script src="https://unpkg.com/countdown-pro@2/dist/countdown.umd.js"></script>
-  <script>
-    var oResult = document.getElementById('result');
-    var oStartBtn = document.getElementById('start');
-    var oPauseBtn = document.getElementById('pause');
-    var oResetBtn = document.getElementById('reset');
+    <script src="https://unpkg.com/countdown-pro@2/dist/countdown.umd.js"></script>
+    <script>
+      var oResult = document.getElementById('result');
+      var oStartBtn = document.getElementById('start');
+      var oPauseBtn = document.getElementById('pause');
+      var oResetBtn = document.getElementById('reset');
 
-    var defaultTime = 10 * 1000;
+      var defaultTime = 10 * 1000;
 
-    var countdown = new CountDown({
-      time: defaultTime,
-      interval: 35,
-      onChange(currentTime) {
-        oResult.innerText = CountDown.format(currentTime, 'ss:SSS');
-      },
-      onEnd() {
-        oResult.innerText = '倒计时结束！';
-      }
-    });
-
-    oResult.innerText = CountDown.format(defaultTime, 'ss:SSS');
-
-    oStartBtn.addEventListener('click', () => {
-      countdown.start();
-    });
-    oPauseBtn.addEventListener('click', () => {
-      countdown.pause();
-    });
-    oResetBtn.addEventListener('click', () => {
-      countdown.reset();
-    });
-  </script>
-
-  <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      document.querySelectorAll('pre code').forEach((el) => {
-        hljs.highlightElement(el);
+      var countdown = new CountDown({
+        time: defaultTime,
+        interval: 35,
+        onChange(currentTime) {
+          oResult.innerText = CountDown.format(currentTime, 'ss:SSS');
+        },
+        onEnd() {
+          oResult.innerText = '倒计时结束！';
+        }
       });
-    });
-  </script>
-</body>
 
+      oResult.innerText = CountDown.format(defaultTime, 'ss:SSS');
+
+      oStartBtn.addEventListener('click', () => {
+        countdown.start();
+      });
+      oPauseBtn.addEventListener('click', () => {
+        countdown.pause();
+      });
+      oResetBtn.addEventListener('click', () => {
+        countdown.reset();
+      });
+    </script>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre code').forEach((el) => {
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
+  </body>
 </html>
