@@ -134,5 +134,28 @@ describe('countdown', () => {
     countdown.adjustTime();
     expect(changeFn).toHaveBeenCalledTimes(2);
     expect(changeFn).toHaveBeenCalledWith(58000);
+
+    jest.advanceTimersByTime(58 * 1000);
+    expect(changeFn).toHaveBeenCalledTimes(60);
+    expect(changeFn).toHaveBeenCalledWith(0);
+  });
+
+  it('adjustInterval run end', () => {
+    const changeFn = jest.fn();
+    const endFn = jest.fn();
+
+    const countdown = new CountDown({
+      time: 60 * 1000,
+      onChange: changeFn,
+      onEnd: endFn,
+      adjustInterval: 10 * 1000
+    });
+
+    countdown.start();
+
+    jest.advanceTimersByTime(60 * 1000);
+    expect(changeFn).toHaveBeenCalledTimes(60);
+    expect(changeFn).toHaveBeenCalledWith(0);
+    expect(endFn).toHaveBeenCalledTimes(1);
   });
 });

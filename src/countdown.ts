@@ -146,8 +146,10 @@ class CountDown {
     this.adjustTimer = null;
   }
 
-  private _onEnd() {
+  private _handleEnd() {
     clearInterval(this.adjustTimer);
+    this.counting = false;
+    this.completed = true;
     this.o.onEnd();
   }
 
@@ -238,7 +240,11 @@ class CountDown {
         this.pause();
         this.currentTime = newCurrentTime;
         this.o.onChange(this.currentTime);
-        this.start();
+        if (this.currentTime === 0) {
+          this._handleEnd();
+        } else {
+          this.start();
+        }
       }
     }
   }
@@ -289,9 +295,7 @@ class CountDown {
       this.o.onChange(this.currentTime);
 
       if (this.currentTime === 0) {
-        this.counting = false;
-        this.completed = true;
-        this._onEnd();
+        this._handleEnd();
       } else {
         this.tick();
       }
